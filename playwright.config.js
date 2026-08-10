@@ -7,14 +7,13 @@ export default defineConfig({
   reporter: 'html',
 
   use: {
-    headless: false,
-    channel: 'chrome',
+    headless: true,
     trace: 'on-first-retry',
   },
 
   projects: [
     {
-      name: 'chrome',
+      name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
   ],
