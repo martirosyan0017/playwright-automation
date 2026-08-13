@@ -5,17 +5,19 @@ export class BasePage {
     this.page = page;
   }
 
-  async navigateTo(path) {
+  async navigateTo(path = "") {
     await this.page.goto(process.env.BASE_URL + path);
   }
 
-  async waitForElement(selector) {
-    await this.page.waitForElement(selector);
+  async waitForElement(locator) {
+    await locator.waitFor();
   }
-  async clickElement(selector) {
-    await this.page.clickElement(selector);
+
+  async clickElement(locator) {
+    await locator.click();
   }
-  async fillElement(selector,text){
-    await this.page.fillElement(selector,text);
+
+  async fillElement(locator, text) {
+    await locator.fill(text);
   }
 }
