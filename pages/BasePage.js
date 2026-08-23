@@ -20,4 +20,9 @@ export class BasePage {
   async inputElement(locator, text) {
     await locator.fill(text);
   }
+
+  async assertErrorMsg(locator, errorMessage) {
+    await expect(locator).toBeVisible();
+    await expect(locator).toHaveText(errorMessage);
+  }
 }

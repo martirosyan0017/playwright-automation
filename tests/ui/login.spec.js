@@ -12,9 +12,10 @@ test.describe('Login', () => {
     await loginPage.login(process.env.EMAIL,process.env.PASSWORD);
   });
 
-  test('User cannot login with invalid email', async () => {
-    await loginPage.login('invalid@email.com',process.env.PASSWORD);
-  });
+test('User cannot login with invalid email', async () => {
+  await loginPage.login('invalid@email.com',process.env.PASSWORD);
+  await loginPage.assertLoginError();
+});
 
   test('User cannot login with invalid password', async () => {
     await loginPage.login(process.env.EMAIL,'InvalidPassword123');
