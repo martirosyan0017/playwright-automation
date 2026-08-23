@@ -21,8 +21,8 @@ export class BasePage {
     await locator.fill(text);
   }
 
-  async assertErrorMsg(locator, errorMessage) {
+  async assertErrorMessage(locator, expectedMessage) {
     await expect(locator).toBeVisible();
-    await expect(locator).toHaveText(errorMessage);
+    await expect(locator).toHaveText(expectedMessage);
   }
 }
