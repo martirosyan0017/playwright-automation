@@ -17,7 +17,12 @@ export class BasePage {
     await locator.click();
   }
 
-  async fillElement(locator, text) {
+  async inputElement(locator, text) {
     await locator.fill(text);
+  }
+
+  async assertErrorMessage(locator, expectedMessage) {
+    await expect(locator).toBeVisible();
+    await expect(locator).toHaveText(expectedMessage);
   }
 }
