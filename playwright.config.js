@@ -9,6 +9,9 @@ export default defineConfig({
     reporter: 'html',
 
     use: {
+        // Allows APIRequestContext to resolve relative API paths, as well as
+        // keeping page navigation on the same application host.
+        baseURL: process.env.BASE_URL,
         headless: true,
         trace: 'on-first-retry',
     },

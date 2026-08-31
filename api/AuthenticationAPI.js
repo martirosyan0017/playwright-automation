@@ -1,22 +1,26 @@
-class AuthenticationAPI {
-  constructor(request) {
-    this.request = request;
-  }
-
+const { BaseAPI } = require("./BaseAPI");
+class AuthenticationAPI extends BaseAPI {
   async apiLogin(email, password) {
-    const response = await this.request.post('/login', {
-      data: {email, password}
+    const response = await this.postForm("/api/verifyLogin", {
+      email,
+      password,
     });
 
-    if (!response.ok()) {
-      throw new Error(
-        `Login failed: ${response.status()} ${await response.text()}`
-      );
-    }
+    return await response.json();
+  }
 
-    const responseBody = await response.json();
+  async apiLoginWithoutEmail(password) {
+    const response = await this.postForm("/api/verifyLogin", {
+      password,
+    });
 
-    return responseBody;
+    return await response.json();
+  }
+
+  async apiDeleteLogin() {
+    const response = await this.delete("/api/verifyLogin");
+
+    return await response.json();
   }
 }
 

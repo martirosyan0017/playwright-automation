@@ -21,3 +21,5 @@ export const loginData = {
   expectedError: "Your email or password is incorrect!",
   expectedValidationMessage: "Please fill out this field.",
 };
+
+module.exports = { loginData };
